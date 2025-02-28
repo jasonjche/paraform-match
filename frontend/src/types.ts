@@ -19,6 +19,7 @@ export interface User {
   id: string;
   name: string;
   email: string;
+  in_role: boolean;
   candidateCount?: number;
   candidates?: Candidate[];
 }
@@ -35,7 +36,7 @@ export interface Recruiter {
   internal_rating: number;
   linkedin_url: string;
   email: string;
-  type: 'preferred' | 'super preferred' | 'limit' | 'regular';
+  type: "preferred" | "super preferred" | "limit" | "regular";
   last_active: string;
 }
 

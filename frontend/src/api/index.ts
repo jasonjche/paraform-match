@@ -21,8 +21,6 @@ export const fetchData = async (
       }
     );
 
-    console.log("Response:", response);
-
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -38,28 +36,5 @@ export const fetchData = async (
     }
     console.error("Unknown error fetching data from API:", error);
     throw new Error("An unknown error occurred while fetching data");
-  }
-};
-
-const API_BASE_URL = "http://localhost:3000/api";
-
-export const analyzeCandidates = async (data: any) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/analyze-candidates`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error("Error analyzing candidates:", error);
-    throw error;
   }
 };

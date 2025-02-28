@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,7 +13,7 @@ import TabNavigation from "./components/TabNavigation";
 import CandidateTable from "./components/CandidateTable";
 import RecruiterTable from "./components/RecruiterTable";
 import CandidateRoleMatch from "./components/CandidateRoleMatch";
-import { UserSearch, Briefcase, Loader2 } from "lucide-react";
+import { UserSearch, Loader2 } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 
 const Navigation = () => {
