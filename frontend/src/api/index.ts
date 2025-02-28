@@ -12,7 +12,7 @@ export const fetchData = async (
 
   try {
     const response = await fetch(
-      `https://nodejs-serverless-function-express-inky-ten.vercel.app/api/getMatchedCandidates?roleId=${roleId}`,
+      `https://paraform-match-3wt7t0vmd-jasonjches-projects.vercel.app/api/getMatchedCandidates?roleId=${roleId}`,
       {
         method: "GET",
         headers: {
