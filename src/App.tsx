@@ -63,13 +63,11 @@ const RoleDashboard = () => {
   const [activeTab, setActiveTab] = useState<"candidates" | "recruiters">(
     "candidates"
   );
-  const [roleLink, setRoleLink] = useState<string | null>(null);
   const [data, setData] = useState<RoleToCandidatesResponse | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleRoleLinkSubmit = async (linkId: string) => {
-    setRoleLink(linkId);
     setLoading(true);
     setError(null);
 
