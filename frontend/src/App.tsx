@@ -41,7 +41,7 @@ const Navigation = () => {
               >
                 <UserSearch size={18} className="mr-1" /> Role to Candidates
               </Link>
-              <Link
+              {/* <Link
                 to="/candidate-match"
                 className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
                   location.pathname === "/candidate-match"
@@ -50,7 +50,7 @@ const Navigation = () => {
                 }`}
               >
                 <Briefcase size={18} className="mr-1" /> Candidate to Roles
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
