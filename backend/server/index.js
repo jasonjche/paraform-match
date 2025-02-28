@@ -21,7 +21,7 @@ app.use(express.json());
 
 // Add a new endpoint to fetch matched candidates
 app.get("/api/get-matched-candidates", async (req, res) => {
-  const roleId = req.query.role_id || "clwe32n53002clb0ctunw0msj"; // Default role_id
+  const roleId = req.query.role_id; // Default role_id
   const apiUrl = `http://paraform.com/api/cron/role/get_matched_candidates?role_id=${roleId}`;
   try {
     const response = await axios.get(apiUrl, {
