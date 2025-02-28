@@ -1,15 +1,63 @@
-import { ApiResponse } from '../types';
-import { mockData } from './mockData';
+import { RoleToCandidatesResponse } from "../types";
+// This function fetches data from the actual API endpoint
+export const fetchData = async (
+  roleId?: string
+): Promise<RoleToCandidatesResponse | null> => {
+  if (!roleId) {
+    console.log("No role link provided");
+    return null;
+  }
 
-// This function simulates an API call
-// Replace this with your actual API implementation
-export const fetchData = async (roleLink?: string): Promise<ApiResponse> => {
-  // Simulate network delay
-  await new Promise(resolve => setTimeout(resolve, 500));
-  
-  // In a real implementation, you would use the roleLink to fetch specific data
-  console.log('Fetching data for role:', roleLink);
-  
-  // Return mock data for now
-  return mockData;
+  const TIMEOUT_MS = 10000; // 10 seconds
+
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/get-matched-candidates?role_id=${roleId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    if (error instanceof Error) {
+      if (error.name === "AbortError") {
+        throw new Error(`Request timed out after ${TIMEOUT_MS}ms`);
+      }
+      console.error("Error fetching data from API:", error.message);
+      throw error;
+    }
+    console.error("Unknown error fetching data from API:", error);
+    throw new Error("An unknown error occurred while fetching data");
+  }
+};
+
+const API_BASE_URL = "http://localhost:3000/api";
+
+export const analyzeCandidates = async (data: any) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/analyze-candidates`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error analyzing candidates:", error);
+    throw error;
+  }
 };
