@@ -12,7 +12,7 @@ export const fetchData = async (
 
   try {
     const response = await fetch(
-      `https://paraform-match-3wt7t0vmd-jasonjches-projects.vercel.app/api/getMatchedCandidates?roleId=${roleId}`,
+      `https://paraform-match-api.vercel.app/api/getMatchedCandidates?roleId=${roleId}`,
       {
         method: "GET",
         headers: {
